@@ -1,4 +1,4 @@
-%% GPON FTTH Performance Analysis using MATLAB
+% GPON FTTH Performance Analysis using MATLAB
 % Author: Aryan Mohan Saxena
 % Description:
 % This script simulates the performance of a GPON (Gigabit Passive Optical Network)
