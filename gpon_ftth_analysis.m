@@ -7,7 +7,7 @@
 
 clc; clear; close all;
 
-%% System Parameters
+% System Parameters
 P_tx = 5;                         % Transmit power (dBm), typical for OLT
 attenuation_db_per_km = 0.35;    % SMF attenuation coefficient (dB/km)
 receiver_sensitivity = -28;      % ONT receiver sensitivity threshold (dBm)
@@ -18,7 +18,7 @@ split_ratios = [8 16 32 64];               % Users per OLT port
 % BER as a function of SNR (dB)
 snr_to_ber = @(snr_db) 0.5 * erfc(sqrt(10.^(snr_db/10)));
 
-%% Simulation Loop
+% Simulation Loop
 for i = 1:length(split_ratios)
     split = split_ratios(i);
     split_loss_db = 10 * log10(split);   % Loss due to passive optical splitter (dB)
@@ -42,7 +42,7 @@ for i = 1:length(split_ratios)
         ber(j) = snr_to_ber(snr_db(j));
     end
 
-    %% Plot: Received Power vs Fiber Length
+    % Plot: Received Power vs Fiber Length
     figure(1);
     plot(fiber_length_km, received_power, '-o', ...
         'DisplayName', sprintf('Split %d', split));
@@ -53,7 +53,7 @@ for i = 1:length(split_ratios)
     grid on;
     legend show;
 
-    %% Plot: BER vs Fiber Length
+    % Plot: BER vs Fiber Length
     figure(2);
     semilogy(fiber_length_km, ber, '-o', ...
         'DisplayName', sprintf('Split %d', split));
@@ -65,7 +65,7 @@ for i = 1:length(split_ratios)
     legend show;
 end
 
-%% Notes:
+% Notes:
 % - Received power is expressed in dBm, and negative values are normal in optical
 %   communication due to attenuation and passive losses.
 % - BER increases with fiber length and higher split ratios due to reduced received
